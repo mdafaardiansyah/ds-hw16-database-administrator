@@ -1,15 +1,22 @@
 # MySQL Database Configuration - DigitalSkola Homework 16
 
+Project ini mengimplementasikan konfigurasi database MySQL menggunakan Docker Compose untuk memenuhi tugas **DigitalSkola Homework ke 16 - Database Administrator**. Sistem ini menyediakan lingkungan database yang reproducible dan terisolasi dengan multiple databases, users, dan privilege management.
+
 <!-- Language Toggle -->
 **🌐 Language / Bahasa:**
 - [🇺🇸 English](../README.md#english-version)
-- [🇮🇩 Bahasa Indonesia](#bahasa-indonesia)
+- [🇮🇩 Bahasa Indonesia - **Sekarang**](#bahasa-indonesia)
 
 ---
+### 🔗 Quick Navigation
 
-## Bahasa Indonesia
+- [📋 Requirements](#requirements)
+- [🚀 Quick Start](#quick-start)
+- [📊 Database Specifications](#database-specifications)
+- [🔧 Detailed Usage](#detailed-usage)
+- [🧹 Cleanup](#cleanup)
 
-Proyek ini mengimplementasikan konfigurasi database MySQL menggunakan Docker Compose untuk memenuhi tugas **DigitalSkola Homework ke 16 - Database Administrator**. Sistem ini menyediakan lingkungan database yang reproducible dan terisolasi dengan multiple databases, users, dan privilege management.
+---
 
 ## 📋 Requirements
 
@@ -290,13 +297,3 @@ Jika mengalami masalah:
 **Version / Versi**: 1.0
 
 ---
-
-### 🔗 Quick Navigation / Navigasi Cepat
-
-- [🇺🇸 English Version](../README.md#english-version)
-- [🇮🇩 Bahasa Indonesia](#bahasa-indonesia)
-- [📋 Requirements](#requirements)
-- [🚀 Quick Start](#quick-start)
-- [📊 Spesifikasi Database](#spesifikasi-database)
-- [🔧 Penggunaan Detail](#penggunaan-detail)
-- [🧹 Cleanup](#cleanup)

@@ -2,10 +2,10 @@
 
 
 This project implements MySQL database configuration using Docker Compose to fulfill **DigitalSkola Homework 16 - Database Administrator** assignment. This system provides a reproducible and isolated database environment with multiple databases, users, and privilege management.
----
+
 <!-- Language Toggle -->
 **🌐 Language / Bahasa:**
-- [🇺🇸 English](#english-version)
+- [🇺🇸 English - **Now**](#english-version)
 - [🇮🇩 Bahasa Indonesia](language/README-ID.md)
 ---
 ### 🔗 Quick Navigation
@@ -18,7 +18,7 @@ This project implements MySQL database configuration using Docker Compose to ful
 
 ---
 
-### 📋 Requirements
+## 📋 Requirements
 
 Before starting, ensure your system has:
 
@@ -40,7 +40,7 @@ docker compose version
 sudo systemctl status docker
 ```
 
-### 🏗️ Project Structure
+## 🏗️ Project Structure
 
 ```
 homework-16/
@@ -53,7 +53,7 @@ homework-16/
  
 ```
 
-### 🚀 Quick Start
+## 🚀 Quick Start
 
 #### 1. Clone and Enter Project Directory
 
@@ -91,7 +91,7 @@ This command will:
 ./verify.sh
 ```
 
-### 📊 Database Specifications
+## 📊 Database Specifications
 
 #### Created Databases
 
@@ -110,7 +110,7 @@ This command will:
 | `eka` | `password_eka` | ALL PRIVILEGES | All databases |
 | `root` | `root_password_rahasia` | ALL PRIVILEGES | All databases |
 
-### 🔧 Detailed Usage
+## 🔧 Detailed Usage
 
 #### Running Container
 
@@ -170,7 +170,7 @@ SHOW GRANTS FOR 'dion'@'%';
 SHOW GRANTS FOR 'eka'@'%';
 ```
 
-### 🔍 Monitoring and Troubleshooting
+## 🔍 Monitoring and Troubleshooting
 
 #### View Container Logs
 
@@ -220,7 +220,7 @@ docker compose exec mysql-db mysqldump -u root -p'root_password_rahasia' --all-d
 docker compose exec -T mysql-db mysql -u root -p'root_password_rahasia' Databaseservicea < backup_servicea.sql
 ```
 
-### 🧹 Cleanup
+## 🧹 Cleanup
 
 #### Automatic Cleanup
 
@@ -273,13 +273,13 @@ FLUSH PRIVILEGES;
 | F-05 | Dion read-only access to Databaseserviceb | ✅ |
 | F-06 | Eka full admin privileges | ✅ |
 
-### 📚 References
+## 📚 References
 
 - [MySQL Official Documentation](https://dev.mysql.com/doc/)
 - [Docker Compose Documentation](https://docs.docker.com/compose/)
 - [MySQL Docker Image](https://hub.docker.com/_/mysql)
 
-### 👥 Support
+## 👥 Support
 
 If you encounter issues:
 
@@ -294,4 +294,5 @@ If you encounter issues:
 **Date**: June 24, 2025  
 **Version**: 1.0
 
+---
 
