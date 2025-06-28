@@ -1,26 +1,26 @@
-version: '3.8'
+version: '3.8'                      # Versi docker-compose yang digunakan
 
-services:
-  mysql-db:
-    image: mysql:8.0
-    container_name: mysql-homework16
-    restart: unless-stopped
-    environment:
-      MYSQL_ROOT_PASSWORD: root_password_rahasia
-      MYSQL_DATABASE: initial_db
-    ports:
-      - "3307:3306"
-    volumes:
-      - mysql_data:/var/lib/mysql
-      - ./init:/docker-entrypoint-initdb.d
-    networks:
-      - mysql_network
-    command: --default-authentication-plugin=mysql_native_password
+services:                           # Daftar service/container yang akan dijalankan
+  mysql-db:                         # Nama service untuk database MySQL
+    image: mysql:8.0                # Menggunakan image MySQL versi 8.0
+    container_name: mysql-homework16 # Nama container yang akan dibuat
+    restart: unless-stopped         # Restart otomatis kecuali dihentikan manual
+    environment:                    # Variabel lingkungan untuk konfigurasi MySQL
+      MYSQL_ROOT_PASSWORD: root_password_rahasia # Password root MySQL
+      MYSQL_DATABASE: initial_db    # Nama database awal yang dibuat
+    ports:                          # Mapping port host ke container
+      - "3307:3306"                 # Port 3307 di host ke 3306 di container
+    volumes:                        # Mount volume untuk data dan inisialisasi
+      - mysql_data:/var/lib/mysql # Data MySQL disimpan di volume
+      - ./init:/docker-entrypoint-initdb.d # Folder init untuk inisialisasi
+    networks:                       # Menghubungkan ke network khusus
+      - mysql_network               # Nama network yang digunakan
+    command: --default-authentication-plugin=mysql_native_password # Perintah tambahan untuk plugin autentikasi
 
-volumes:
-  mysql_data:
-    driver: local
+volumes:                          # Definisi volume Docker
+  mysql_data:                     # Nama volume untuk data MySQL
+    driver: local                 # Menggunakan driver lokal
 
-networks:
-  mysql_network:
-    driver: bridge
+networks:                         # Definisi network Docker
+  mysql_network:                  # Nama network
+    driver: bridge                # Menggunakan driver bridge

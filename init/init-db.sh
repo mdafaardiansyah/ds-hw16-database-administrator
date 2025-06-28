@@ -1,47 +1,48 @@
 #!/bin/bash
-set -e
+# Shebang: Menandakan file ini adalah script bash
+set -e # Jika ada perintah gagal, script akan langsung berhenti
 
-echo "Starting database initialization..."
+echo "Starting database initialization..." # Menampilkan pesan mulai inisialisasi
 
-# Wait for MySQL to be ready
+# Tunggu hingga MySQL siap menerima koneksi
 until mysql -u root -p"$MYSQL_ROOT_PASSWORD" -e "SELECT 1" >/dev/null 2>&1; do
-  echo "Waiting for MySQL to be ready..."
-  sleep 2
-done
+  echo "Waiting for MySQL to be ready..." # Pesan menunggu MySQL
+  sleep 2 # Tunggu 2 detik sebelum cek lagi
+ done
 
-echo "MySQL is ready. Creating databases and users..."
+echo "MySQL is ready. Creating databases and users..." # Pesan jika MySQL sudah siap
 
-# Execute SQL commands
+# Menjalankan perintah SQL berikut sebagai root
 mysql -u root -p"$MYSQL_ROOT_PASSWORD" <<-EOSQL
-    -- Create databases
+    -- Membuat database jika belum ada
     CREATE DATABASE IF NOT EXISTS Databaseservicea;
     CREATE DATABASE IF NOT EXISTS Databaseserviceb;
     CREATE DATABASE IF NOT EXISTS databaseservicec;
     
-    -- Create users
+    -- Membuat user jika belum ada
     CREATE USER IF NOT EXISTS 'andi'@'%' IDENTIFIED BY 'password_andi';
     CREATE USER IF NOT EXISTS 'dion'@'%' IDENTIFIED BY 'password_dion';
     CREATE USER IF NOT EXISTS 'eka'@'%' IDENTIFIED BY 'password_eka';
     
-    -- Grant privileges for andi (SELECT, INSERT, UPDATE, DELETE, CREATE, DROP on Databaseservicea)
+    -- Memberikan hak akses ke user andi (SELECT, INSERT, UPDATE, DELETE, CREATE, DROP pada Databaseservicea)
     GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP ON Databaseservicea.* TO 'andi'@'%';
     
-    -- Grant privileges for dion (SELECT only on Databaseserviceb)
+    -- Memberikan hak akses ke user dion (hanya SELECT pada Databaseserviceb)
     GRANT SELECT ON Databaseserviceb.* TO 'dion'@'%';
     
-    -- Grant privileges for eka (ALL PRIVILEGES on all databases)
+    -- Memberikan semua hak akses ke user eka pada semua database
     GRANT ALL PRIVILEGES ON *.* TO 'eka'@'%' WITH GRANT OPTION;
     
-    -- Flush privileges to ensure changes take effect
+    -- Menyegarkan hak akses agar perubahan berlaku
     FLUSH PRIVILEGES;
     
-    -- Show created databases
+    -- Menampilkan database yang sudah dibuat
     SHOW DATABASES;
     
-    -- Show created users
+    -- Menampilkan user yang sudah dibuat
     SELECT user, host FROM mysql.user WHERE user IN ('andi', 'dion', 'eka');
 EOSQL
 
-echo "Database initialization completed successfully!"
-echo "Created databases: Databaseservicea, Databaseserviceb, databaseservicec"
-echo "Created users: andi, dion, eka with respective privileges"
+echo "Database initialization completed successfully!" # Pesan jika inisialisasi selesai
+echo "Created databases: Databaseservicea, Databaseserviceb, databaseservicec" # Info database yang dibuat
+echo "Created users: andi, dion, eka with respective privileges" # Info user yang dibuat

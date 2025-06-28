@@ -91,6 +91,16 @@ This command will:
 ./verify.sh
 ```
 
+#### 5. Automation Installation with Script
+
+```bash
+./init-db.sh
+```
+
+### OR Manual Installation
+
+V V V V V
+
 ## 📊 Database Specifications
 
 #### Created Databases
